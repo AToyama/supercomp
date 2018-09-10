@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/body.h
+
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/mov_seq.cpp
+stdio.h
+-
+math.h
+-
+chrono
+-
+vector
+-
+fstream
+-
+iostream
+-
+string
+-
+body.h
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/body.h
+

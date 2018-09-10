@@ -1,0 +1,1 @@
+/usr/bin/c++     -fopenmp CMakeFiles/mov_par.dir/mov_par.cpp.o  -o mov_par -rdynamic 
