@@ -28,13 +28,39 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <math.h>
+#include <stdlib.h>
 
 #include "visualizador.h"
 
 using namespace std;
 
+void acc_calc(double mu, Ball& ball) {
+
+    double v = sqrt(pow(ball.vx,2) + pow(ball.vy,2));
+    double cos = ball.vx/v;
+    double sen = ball.vy/v;
+
+    double acc = 9.8*ball.mass*mu;
+
+    ball.accx = acc*cos;
+    ball.accy = acc*sen;
+
+    if(ball.vx == 0 and ball.vy == 0){
+        ball.accx = 0;
+        ball.accy = 0;
+    }
+
+    if(ball.accx < 0){
+        ball.accx *= -1;
+    }
+
+    if(ball.accy < 0){
+        ball.accy *= -1;
+    }   
+}
+
 int main(int argc, char ** argv) {
-    
 
     // input parsing
 
@@ -82,14 +108,23 @@ int main(int argc, char ** argv) {
         ball.y = input[10+7*i];
         ball.vx = input[11+7*i];
         ball.vy = input[12+7*i];
-        ball.acc = 9.8*ball.mass*input[3];
+        acc_calc(input[3], ball);
         balls.push_back(ball);
     }
 
-    // run simulation
-    Visualizador v(balls, input[0], input[1], 0.01);
-    v.run();
+    //capture the enviroment variable DELTA_T
+    char* dT = getenv("DELTA_T");
+
+    //srun the simulation with the right DELTA_T
+    if(dT){
+        Visualizador v(balls, input[0], input[1], atof(dT));
+        v.run();
+    }
+    else{
+        Visualizador v(balls, input[0], input[1], 0.01);   
+        v.run();
+    }
+    
 
     return 0; 
 }
-//https://gamedevelopment.tutsplus.com/tutorials/when-worlds-collide-simulating-circle-circle-collisions--gamedev-769

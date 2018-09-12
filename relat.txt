@@ -1,74 +1,77 @@
-Projeto 1 - SimulaÁ„o de Fisica 2D
-Super ComputaÁ„o - 2018/2
+Projeto 1 - Simula√ß√£o de Fisica 2D
+Super Computa√ß√£o - 2018/2
 
-AndrÈ De Marco Toyama
+Andr√© De Marco Toyama
 
-introduÁ„o:
+introdu√ß√£o:
 
-Este projeto tem como objetivo realizar um estudo de diferentes tÈcnicas de supercomputaÁ„o e sua diferenÁa de performance. Para realizar os testes adotamos um modelo de simulaÁ„o baseado em conceitos explorados em FÌsica do Movimento, em que simulamos a colis„o de corpos em um plano 2D.
+Este projeto tem como objetivo realizar um estudo de diferentes t√©cnicas de supercomputa√ß√£o e sua diferen√ßa de performance. Para realizar os testes adotamos um modelo de simula√ß√£o baseado em conceitos explorados em F√≠sica do Movimento, em que simulamos a colis√£o de corpos em um plano 2D.
 
-Modelo de SimulaÁ„o:
+Modelo de Simula√ß√£o:
 
-Para nossa simulaÁ„o consideramos que cada corpo simulado possui massa, aceleraÁ„o, raio,  velocidade e posiÁ„o, assim adotamos um modelo el·stico para tratar colis„o entre dois corpos. Esse modelo obedece a regra de que a quantidade de movimento e a energia cinÈtica se mantÈm constantes apÛs uma colis„o, ent„o se considerarmos uma colis„o entre dois objetos de m1, m2 e velocidade v1 e v2, vemos que o momento permanece constante apÛs a colis„o na seguinte equaÁ„o:
+Para nossa simula√ß√£o consideramos que cada corpo simulado possui massa, acelera√ß√£o, raio,  velocidade e posi√ß√£o, assim adotamos um modelo el√°stico para tratar colis√£o entre dois corpos. Esse modelo obedece a regra de que a quantidade de movimento e a energia cin√©tica se mant√©m constantes ap√≥s uma colis√£o, ent√£o se considerarmos uma colis√£o entre dois objetos de m1, m2 e velocidade v1 e v2, vemos que o momento permanece constante ap√≥s a colis√£o na seguinte equa√ß√£o:
 
 m1v1 + m2v2 = m1v1' + m2v2'
 
-Para obtermos a velocidade do objeto apÛs a colis„o nos baseamos na seguinte equaÁ„o
+Para obtermos a velocidade do objeto ap√≥s a colis√£o nos baseamos na seguinte equa√ß√£o
 
 **wikipedia**
 
-nos aproveitamos do fato de que j· temos a velocidade dividida em suas componentes direcionais vx e vy e modificamos a equaÁ„o para cada respectiva direÁ„o:
+nos aproveitamos do fato de que j√° temos a velocidade dividida em suas componentes direcionais vx e vy e modificamos a equa√ß√£o para cada respectiva dire√ß√£o:
 
 vx
 vy
 vx2
 vy2
 
-Por fim temos a nossa "mesa", onde ocorre a simulaÁ„o dos corpos, ela tem uma largura, altura e um coeficiente de atrito din‚mico, que È usado para o c·lculo da aceleraÁ„o dos corpos.
+Por fim temos a nossa "mesa", onde ocorre a simula√ß√£o dos corpos, ela tem uma largura, altura e um coeficiente de atrito din√¢mico, que √© usado para o c√°lculo da acelera√ß√£o dos corpos.
 
 ||a|| = coeficiente * massa * g
 
-Sistema:
+-FALAR SOBRE OPENMP E SIMD
 
-_______
+- SISTEMA
 
 
 Executando o projeto:
 
-O projeto È compilado atravÈs de CMake, ao compilar com o comando "make" s„o gerados quatro diferentes executaveis no diretÛrio:
+O projeto √© compilado atrav√©s de CMake, com o comando:
 
-	-visualizador -> para ver a simulaÁ„o gr·fica
-	-mov_seq -> realizar o teste de tempo da vers„o sequencial
-	-mov_par -> realizar o teste de tempo da vers„o paralelizada
-	-mov_simd -> realziar o teste de tempo com instruÁıes SIMD
+	$ make
 
-Os arquivos devem ser eceutados da seguinte maneira:
+S√£o gerados quatro diferentes executaveis no diret√≥rio:
 
-	./[executavel] [arquivo de entrada]
+	-visualizador -> para ver a simula√ß√£o gr√°fica
+	-mov_seq -> realizar o teste de tempo da vers√£o sequencial
+	-mov_par -> realizar o teste de tempo da vers√£o paralelizada
+	-mov_simd -> realziar o teste de tempo com instru√ß√µes SIMD
 
-Para o arquivo de entrada temos alguns exemplos prontos para testar diferentes situaÁıes:
+Os execut√°veis requerem um arquivo de entrada com as informa√ß√µes necessa≈ïias para a simula√ß√£o, tanto da mesa qunato das diferentes bolas. Para o arquivo de entrada temos alguns exemplos prontos para testar diferentes situa√ß√µes:
 
 - input1.txt -> teste de um corpo colidindo com a parede
-- input2.txt -> teste de colis„o entre dois corpos de massa diferente
-- input3.txt -> teste de colis„o simult‚nea de trÍs corpos
-- input4.txt -> teste de colis„o entre v·rios corpos de diferentes tamanhos e massas
+- input2.txt -> teste de colis√£o entre dois corpos de massas diferentes
+- input3.txt -> teste de colis√£o simult√¢nea de tr√™s corpos
+- input4.txt -> teste de colis√£o entre v√°rios corpos de diferentes tamanhos e massas
 
-para melhor visualizaÁ„o, nesse especÌficos testes consideramos o coeficiente de atrito como 0, para podermos observar o comportamento dos corpos por um perÌodo maior.
-Por fim, temos no projeto o arquivo "input_generator.py", que È basicamente um scrip de python que gera um arquivo chamado "input.txt" no qual se pode prÈ definir os dados da simulaÁ„o. Para mudar os dados do arquivo gerado basta mudar os valores no comeÁo do cÛdigo:
+para melhor visualiza√ß√£o, nesse espec√≠ficos testes consideramos o coeficiente de atrito como 0, para podermos observar o comportamento dos corpos por um per√≠odo maior.
+Por fim, temos no projeto o arquivo "input_generator.py", que √© basicamente um scrip de python que gera um arquivo chamado "input.txt" no qual se pode pr√© definir os dados da simula√ß√£o. Para mudar os dados do arquivo gerado basta mudar os valores no come√ßo do c√≥digo:
 
 -foto
 
 table_width -> largura da mesa
 table_heigth -> altura da mesa
-number_of_bodies -> n˙mero de corpos a ser simulados
-radius -> raio dos corpos (nesse caso todos os corpos sempre ter„o o mesmo raio)
-mu -> coeficiente de atrito din‚mico
-speed_range -> atribui uma velocidade aleatÛria para os corpos entre x e -x
+number_of_bodies -> n√∫mero de corpos a ser simulados
+radius -> raio dos corpos (nesse caso todos os corpos sempre ter√£o o mesmo raio)
+mu -> coeficiente de atrito din√¢mico
+speed_range -> atribui uma velocidade aleat√≥ria para os corpos entre x e -x
 mass -> massa dos corpos
-mass_range -> atribui uma massa ale·toria entre 1 e x, se esse atributo for deixado como 0, todos os corpos ter„o a mesma massa com o valor de "mass".
+mass_range -> atribui uma massa ale√°toria entre 1 e x, se esse atributo for deixado como 0, todos os corpos ter√£o a mesma massa com o valor de "mass".
 
+Os arquivos devem ser executados da seguinte maneira:
 
--FALAR SOBRE OPENMP E SIMD
+	./[executavel] [arquivo de entrada]
+
 -ANALISE DE TEMPO
+
 
 

@@ -16,15 +16,15 @@ add_definitions("-Wall")
 include_directories(${SDL2_INCLUDE_DIR} ${SDL2_gfx_INCLUDE_DIR})
 
 add_executable(visualizador main.cpp visualizador.cpp)
-add_executable(mov_seq mov_seq.cpp)
-add_executable(mov_par mov_par.cpp)
-SET_TARGET_PROPERTIES(mov_par PROPERTIES COMPILE_FLAGS "-fopenmp"
-LINK_FLAGS "-fopenmp")
+target_link_libraries(visualizador ${SDL2_LIBRARIES} ${SDL2_gfx_LIBRARIES})
 
 add_executable(mov_simd mov_seq.cpp)
 SET_TARGET_PROPERTIES(mov_simd PROPERTIES COMPILE_FLAGS "-ffast-math -ftree-vectorize -mavx")
 
+add_executable(mov_seq mov_seq.cpp)
 
-target_link_libraries(visualizador ${SDL2_LIBRARIES} ${SDL2_gfx_LIBRARIES})
+add_executable(mov_par mov_par.cpp)
+SET_TARGET_PROPERTIES(mov_par PROPERTIES COMPILE_FLAGS "-fopenmp"
+LINK_FLAGS "-fopenmp")
 
 

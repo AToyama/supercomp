@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador
+CMAKE_SOURCE_DIR = /home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador
+CMAKE_BINARY_DIR = /home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/CMakeFiles /home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/CMakeFiles /home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -124,19 +124,6 @@ visualizador/fast:
 .PHONY : visualizador/fast
 
 #=============================================================================
-# Target rules for targets named mov_par
-
-# Build rule for target.
-mov_par: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 mov_par
-.PHONY : mov_par
-
-# fast build rule for target.
-mov_par/fast:
-	$(MAKE) -f CMakeFiles/mov_par.dir/build.make CMakeFiles/mov_par.dir/build
-.PHONY : mov_par/fast
-
-#=============================================================================
 # Target rules for targets named mov_simd
 
 # Build rule for target.
@@ -148,6 +135,19 @@ mov_simd: cmake_check_build_system
 mov_simd/fast:
 	$(MAKE) -f CMakeFiles/mov_simd.dir/build.make CMakeFiles/mov_simd.dir/build
 .PHONY : mov_simd/fast
+
+#=============================================================================
+# Target rules for targets named mov_par
+
+# Build rule for target.
+mov_par: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mov_par
+.PHONY : mov_par
+
+# fast build rule for target.
+mov_par/fast:
+	$(MAKE) -f CMakeFiles/mov_par.dir/build.make CMakeFiles/mov_par.dir/build
+.PHONY : mov_par/fast
 
 #=============================================================================
 # Target rules for targets named mov_seq
@@ -282,8 +282,8 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... visualizador"
-	@echo "... mov_par"
 	@echo "... mov_simd"
+	@echo "... mov_par"
 	@echo "... mov_seq"
 	@echo "... main.o"
 	@echo "... main.i"

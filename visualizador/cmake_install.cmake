@@ -1,4 +1,4 @@
-# Install script for directory: /home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador
+# Install script for directory: /home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

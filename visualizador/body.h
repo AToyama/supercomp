@@ -37,7 +37,7 @@ public:
 	int id;
     double x, y;
     double vx, vy;
-    double mass, radius, acc;
+    double mass, radius, accx, accy;
  	
 };
 

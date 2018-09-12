@@ -48,47 +48,46 @@ int check_sign(double num)
 } 
 
 // function that updates the ball position and speed for each iteration
-void update_ball(Ball& ball)
+void update_ball(Ball& ball,double dT)
 {
-
-    double dT = 0.01;
-
+    //ball position update
     ball.x += ball.vx*dT;
     ball.y += ball.vy*dT;
 
+    //ball speed update
     if(check_sign(ball.vx)){
-        if (ball.vx - ball.acc*dT <= 0){
+        if (ball.vx - ball.accx*dT <= 0){
             ball.vx = 0;
         }
         else{
-            ball.vx -= ball.acc*dT; 
+            ball.vx -= ball.accx*dT; 
         }    
     }
     else{
-        if (ball.vx + ball.acc*dT >= 0){
+        if (ball.vx + ball.accx*dT >= 0){
             ball.vx = 0;
         }
         else{
-            ball.vx += ball.acc*dT; 
+            ball.vx += ball.accx*dT; 
         }  
     }
 
     if(check_sign(ball.vy)){
         
-        if (ball.vy - ball.acc*dT <= 0){
+        if (ball.vy - ball.accy*dT <= 0){
             ball.vy = 0;
         }
         else{
 
-            ball.vy -= ball.acc*dT; 
+            ball.vy -= ball.accy*dT; 
         }    
     }
     else{
-        if (ball.vy + ball.acc*dT >= 0){
+        if (ball.vy + ball.accy*dT >= 0){
             ball.vy = 0;
         }
         else{
-            ball.vy += ball.acc*dT; 
+            ball.vy += ball.accy*dT; 
         }  
     }
 }
@@ -110,7 +109,8 @@ void ball_table_col(Ball& ball, Table table)
 
 
 // function that check if there were a collision between two balls
-bool colide(Ball ball1, Ball ball2){
+bool colide(Ball ball1, Ball ball2)
+{
     double srq_radius = pow((ball1.radius + ball2.radius),2);
     double dist_sqr = pow((ball1.x - ball2.x),2) + pow((ball1.y - ball2.y),2);
 
@@ -127,7 +127,6 @@ bool colide(Ball ball1, Ball ball2){
 void ball_to_ball_col(Ball& ball1, Ball& ball2){
 
     double vx1,vx2,vy1,vy2;
-    double dT = 0.01;
 
     vx1 = (ball1.vx*(ball1.mass - ball2.mass) + 2*ball2.mass*ball2.vx)/(ball1.mass + ball2.mass);
     vy1 = (ball1.vy*(ball1.mass - ball2.mass) + 2*ball2.mass*ball2.vy)/(ball1.mass + ball2.mass);
@@ -160,6 +159,7 @@ Visualizador::Visualizador(std::vector<Ball> &bodies, int field_width, int field
                            SDL_WINDOWPOS_CENTERED, win_width, win_height, 0);
     renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
     iter = 0;
+
 }
 
 Visualizador::~Visualizador() {
@@ -183,6 +183,7 @@ void Visualizador::draw() {
 
 
 void Visualizador::run() {
+
     SDL_ShowWindow(win);
     draw();
     while (!SDL_QuitRequested()) {
@@ -193,6 +194,27 @@ void Visualizador::run() {
 
 void Visualizador::do_iteration() {
 
+    //capture enviroment variable GUI
+    char* gui = getenv("GUI");
+
+    if(gui){
+        if(atof(gui) == 0)
+        {   
+            //print real time of simulation
+            if(iter%1000 == 0){
+                printf("\n%d seconds\n",iter/1000);
+            }
+
+            //prints a list of information from all bodies every second
+            for (int i = 0; i < bodies.size(); ++i){
+                if(iter%1000 == 0){
+                    printf("%d %f %f %f %f %f %f\n", bodies[i].id,bodies[i].radius,bodies[i].mass,bodies[i].x,bodies[i].y,bodies[i].vx,bodies[i].vy);
+                }
+            }          
+
+        }
+    }
+
     //create obj table
     Table table;
     table.width = field_width;
@@ -200,12 +222,11 @@ void Visualizador::do_iteration() {
 
     int i,j;
 
-
         //iterate a list with every ball
         for (i = 0; i < bodies.size(); i++){
 
             //update ball position
-            update_ball(bodies[i]);
+            update_ball(bodies[i],delta_t);
 
             //check collision with the table
             ball_table_col(bodies[i], table);
@@ -215,9 +236,11 @@ void Visualizador::do_iteration() {
 
                 //check and resolve collision ball to ball
                 if(colide(bodies[i],bodies[j])){
+                    printf("\nCHOQUE ID:%d ID:%d DELTA_T:%d\n",int(bodies[i].id),int(bodies[j].id),iter);
                     ball_to_ball_col(bodies[i],bodies[j]);
                 }
             }
         }
+
     iter++;
 }

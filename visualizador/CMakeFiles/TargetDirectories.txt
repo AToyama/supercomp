@@ -1,6 +1,6 @@
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/CMakeFiles/edit_cache.dir
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/CMakeFiles/rebuild_cache.dir
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/CMakeFiles/visualizador.dir
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/CMakeFiles/mov_par.dir
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/CMakeFiles/mov_simd.dir
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/CMakeFiles/mov_seq.dir
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/CMakeFiles/edit_cache.dir
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/CMakeFiles/rebuild_cache.dir
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/CMakeFiles/visualizador.dir
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/CMakeFiles/mov_simd.dir
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/CMakeFiles/mov_par.dir
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/CMakeFiles/mov_seq.dir

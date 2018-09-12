@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/body.h
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/body.h
 
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/main.cpp
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/main.cpp
 stdio.h
 -
 vector
@@ -19,16 +19,20 @@ iostream
 -
 string
 -
+math.h
+-
+stdlib.h
+-
 visualizador.h
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/visualizador.h
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/visualizador.h
 
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/visualizador.cpp
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/visualizador.cpp
 visualizador.h
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/visualizador.h
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/visualizador.h
 SDL2/SDL.h
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/SDL2/SDL.h
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/SDL2/SDL.h
 SDL2/SDL2_gfxPrimitives.h
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/SDL2/SDL2_gfxPrimitives.h
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/SDL2/SDL2_gfxPrimitives.h
 stdio.h
 -
 math.h
@@ -38,11 +42,11 @@ chrono
 omp.h
 -
 
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/visualizador.h
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/visualizador.h
 SDL2/SDL.h
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/SDL2/SDL.h
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/SDL2/SDL.h
 body.h
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/visualizador/body.h
+/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/body.h
 vector
 -
 
