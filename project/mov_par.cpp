@@ -1,3 +1,4 @@
+ 
 #include <stdio.h>
 #include <math.h>
 #include <chrono>
@@ -6,7 +7,7 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
-
+#include <omp.h>
 
 #include "body.h"
 
@@ -32,7 +33,7 @@ int check_sign(double num)
 // function that updates the ball position and speed for each iteration
 void update_ball(Ball& ball,double dT)
 {
-	//ball position update
+    //ball position update
     ball.x += ball.vx*dT;
     ball.y += ball.vy*dT;
 
@@ -205,19 +206,19 @@ int main(int argc, char ** argv) {
     table.width = input[0];
     table.height = input[1];
 
-	double delta_t;
+    double delta_t;
 
     char* dT = getenv("DELTA_T");
 
     if(dT){
-    	delta_t = atof(dT);
+        delta_t = atof(dT);
     }
     else{
-    	delta_t = 0.01;
+        delta_t = 0.01;
     }
 
-	int i,j;
-    int iter = 100000;
+    int i,j;
+    int iter = 1000000;
 
     chrono::time_point<chrono::high_resolution_clock> start, end;
     start = chrono::high_resolution_clock::now();
@@ -225,23 +226,28 @@ int main(int argc, char ** argv) {
     //simulate 100.000 iterations of the simulation
     for (int w = 0; w < iter; ++w)
     {
-	    
-        //iterate a list with every ball
-        for (i = 0; i < balls.size(); i++){
+        #pragma omp parallel
+        {
 
-            //update ball position
-            update_ball(balls[i],delta_t);
+            int nthreads = omp_get_num_threads();
+            int id  = omp_get_thread_num();
 
-            //check collision with the table
-            ball_table_col(balls[i], table);
+            for (int i = id *balls.size()/nthreads; i < (id +1)*balls.size()/nthreads; ++i) {
 
-            //iterate with the rest of the list
-            for (j = i+1; j < balls.size(); j++){
+                //update ball position
+                update_ball(balls[i],delta_t);
 
-                //check and resolve collision ball to ball
-                if(colide(balls[i],balls[j])){
-                    
-                    ball_to_ball_col(balls[i],balls[j]);
+                //check collision with the table
+                ball_table_col(balls[i], table);
+
+                //iterate with the rest of the list
+                for (j = i+1; j < balls.size(); j++){
+
+                    //check and resolve collision ball to ball
+                    if(colide(balls[i],balls[j])){
+                        
+                        ball_to_ball_col(balls[i],balls[j]);
+                    }
                 }
             }
         }
@@ -253,4 +259,4 @@ int main(int argc, char ** argv) {
 
 
     return 0; 
-}
+}    
