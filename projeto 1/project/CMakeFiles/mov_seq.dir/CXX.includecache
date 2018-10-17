@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/body.h
+/home/toyama/Documents/8_Semestre/supercomp/work/supercomp/projeto 1/project/body.h
 
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/mov_seq.cpp
+/home/toyama/Documents/8_Semestre/supercomp/work/supercomp/projeto 1/project/mov_seq.cpp
 stdio.h
 -
 math.h
@@ -26,5 +26,5 @@ string
 stdlib.h
 -
 body.h
-/home/toyama/Documents/8_Semestre/supercomp/projeto1/supercomp/visualizador/body.h
+/home/toyama/Documents/8_Semestre/supercomp/work/supercomp/projeto 1/project/body.h
 

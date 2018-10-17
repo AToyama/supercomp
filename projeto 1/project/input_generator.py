@@ -4,8 +4,8 @@ import random
 
 table_width = 100
 table_height = 100
-number_of_bodies = 100
-radius = 1.5
+number_of_bodies = 500
+radius = 0.5
 mu = 0.01
 speed_range = 6
 mass = 1
@@ -13,7 +13,7 @@ mass_range = 0
 
 # --------------------------------
 
-file = open("/input/input.txt", "w+")
+file = open("input.txt", "w+")
 file.write("%f %f %f\n" % (table_width,table_height,number_of_bodies))
 file.write("%f 1 1\n" % (mu))
 

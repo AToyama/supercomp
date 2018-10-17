@@ -202,11 +202,11 @@ void Visualizador::do_iteration() {
         {   
             //print real time of simulation
             if(iter%1000 == 0){
-                printf("\n%d seconds\n",iter/1000);
+                printf("\n%d seconds\n",int(iter/1000));
             }
 
             //prints a list of information from all bodies every second
-            for (int i = 0; i < bodies.size(); ++i){
+            for (int unsigned i = 0; i < bodies.size(); ++i){
                 if(iter%1000 == 0){
                     printf("%d %f %f %f %f %f %f\n", bodies[i].id,bodies[i].radius,bodies[i].mass,bodies[i].x,bodies[i].y,bodies[i].vx,bodies[i].vy);
                 }
@@ -220,10 +220,8 @@ void Visualizador::do_iteration() {
     table.width = field_width;
     table.height = field_height;
 
-    int i,j;
-
-        //iterate a list with every ball
-        for (i = 0; i < bodies.size(); i++){
+    //#pragma omp parallel for
+        for (int unsigned i = 0; i < bodies.size(); ++i) {
 
             //update ball position
             update_ball(bodies[i],delta_t);
@@ -231,16 +229,19 @@ void Visualizador::do_iteration() {
             //check collision with the table
             ball_table_col(bodies[i], table);
 
+            
             //iterate with the rest of the list
-            for (j = i+1; j < bodies.size(); j++){
+            for (int unsigned j = 0; j < bodies.size(); j++){
 
-                //check and resolve collision ball to ball
-                if(colide(bodies[i],bodies[j])){
-                    printf("\nCHOQUE ID:%d ID:%d DELTA_T:%d\n",int(bodies[i].id),int(bodies[j].id),iter);
-                    ball_to_ball_col(bodies[i],bodies[j]);
+                if(bodies[i].id != bodies[j].id){
+                    //check and resolve collision ball to ball
+                    if(colide(bodies[i],bodies[j])){
+      //                  zer++;
+                        ball_to_ball_col(bodies[i],bodies[j]);
+                    }
                 }
             }
         }
 
-    iter++;
+    //iter++;
 }

@@ -1,4 +1,4 @@
- 
+ //time: 2549.61s
 #include <stdio.h>
 #include <math.h>
 #include <chrono>
@@ -217,8 +217,8 @@ int main(int argc, char ** argv) {
         delta_t = 0.01;
     }
 
-    int i,j;
-    int iter = 1000000;
+    int iter = 100000;
+    int unsigned i,j;
 
     chrono::time_point<chrono::high_resolution_clock> start, end;
     start = chrono::high_resolution_clock::now();
@@ -226,26 +226,22 @@ int main(int argc, char ** argv) {
     //simulate 100.000 iterations of the simulation
     for (int w = 0; w < iter; ++w)
     {
-        #pragma omp parallel
-        {
+        #pragma omp parallel for private(j)
+        for (i = 0; i < balls.size(); ++i) {
 
-            int nthreads = omp_get_num_threads();
-            int id  = omp_get_thread_num();
+            //update ball position
+            update_ball(balls[i],delta_t);
 
-            for (int i = id *balls.size()/nthreads; i < (id +1)*balls.size()/nthreads; ++i) {
+            //check collision with the table
+            ball_table_col(balls[i], table);
 
-                //update ball position
-                update_ball(balls[i],delta_t);
+            
+            //iterate with the rest of the list
+            for (j = 0; j < balls.size(); j++){
 
-                //check collision with the table
-                ball_table_col(balls[i], table);
-
-                //iterate with the rest of the list
-                for (j = i+1; j < balls.size(); j++){
-
+                if(balls[i].id != balls[j].id){
                     //check and resolve collision ball to ball
                     if(colide(balls[i],balls[j])){
-                        
                         ball_to_ball_col(balls[i],balls[j]);
                     }
                 }

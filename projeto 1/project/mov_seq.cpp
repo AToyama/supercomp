@@ -1,3 +1,5 @@
+//time: 4194.42s
+
 #include <stdio.h>
 #include <math.h>
 #include <chrono>
@@ -186,7 +188,7 @@ int main(int argc, char ** argv) {
     vector<Ball> balls;
 
     // create balls, with the respective attributes
-    for (int i = 0; i < input[2]; ++i)
+    for (int unsigned i = 0; i < input[2]; ++i)
     {
         Ball ball;
         ball.id = input[6+7*i];
@@ -216,8 +218,7 @@ int main(int argc, char ** argv) {
     	delta_t = 0.01;
     }
 
-	int i,j;
-    int iter = 1000000;
+    int iter = 100000;
 
     chrono::time_point<chrono::high_resolution_clock> start, end;
     start = chrono::high_resolution_clock::now();
@@ -227,7 +228,7 @@ int main(int argc, char ** argv) {
     {
 	    
         //iterate a list with every ball
-        for (i = 0; i < balls.size(); i++){
+        for (int unsigned i = 0; i < balls.size(); i++){
 
             //update ball position
             update_ball(balls[i],delta_t);
@@ -236,12 +237,13 @@ int main(int argc, char ** argv) {
             ball_table_col(balls[i], table);
 
             //iterate with the rest of the list
-            for (j = i+1; j < balls.size(); j++){
+            for (int unsigned j = 0; j < balls.size(); j++){
 
-                //check and resolve collision ball to ball
-                if(colide(balls[i],balls[j])){
-                    
-                    ball_to_ball_col(balls[i],balls[j]);
+                if(balls[i].id != balls[j].id){
+                    //check and resolve collision ball to ball
+                    if(colide(balls[i],balls[j])){
+                        ball_to_ball_col(balls[i],balls[j]);
+                    }
                 }
             }
         }
