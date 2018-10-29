@@ -220,28 +220,43 @@ void Visualizador::do_iteration() {
     table.width = field_width;
     table.height = field_height;
 
-    //#pragma omp parallel for
-        for (int unsigned i = 0; i < bodies.size(); ++i) {
+    int i,j;
+    vector<int> update;
 
+    #pragma omp parallel for
+    for (int unsigned k = 0; k < bodies.size(); ++k) {
+        update.push_back(1);
+    }
+
+    #pragma omp parallel for private(j)
+    for (i = 0; i < bodies.size(); ++i) {            
+        //iterate with the rest of the list
+        for (j = 0; j < bodies.size(); j++){
+
+            if(bodies[i].id != bodies[j].id){
+                //check and resolve collision ball to ball
+                if(colide(bodies[i],bodies[j])){
+                    ball_to_ball_col(bodies[i],bodies[j]);
+                    update_ball(bodies[i],delta_t);
+                    update_ball(bodies[j],delta_t);
+                    update[i] = 0;
+                    update[j] = 0;
+                }
+            }
+        }
+    }
+
+    #pragma omp parallel for
+    for (i = 0; i < bodies.size(); ++i) {
+        if (update[i])
+        {
             //update ball position
             update_ball(bodies[i],delta_t);
 
             //check collision with the table
-            ball_table_col(bodies[i], table);
-
-            
-            //iterate with the rest of the list
-            for (int unsigned j = 0; j < bodies.size(); j++){
-
-                if(bodies[i].id != bodies[j].id){
-                    //check and resolve collision ball to ball
-                    if(colide(bodies[i],bodies[j])){
-      //                  zer++;
-                        ball_to_ball_col(bodies[i],bodies[j]);
-                    }
-                }
-            }
+            ball_table_col(bodies[i], table);   
         }
+    }
 
     //iter++;
 }

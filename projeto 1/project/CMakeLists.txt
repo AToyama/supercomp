@@ -18,8 +18,8 @@ include_directories(${SDL2_INCLUDE_DIR} ${SDL2_gfx_INCLUDE_DIR})
 add_executable(visualizador main.cpp visualizador.cpp)
 target_link_libraries(visualizador ${SDL2_LIBRARIES} ${SDL2_gfx_LIBRARIES})
 
-add_executable(mov_simd mov_seq.cpp)
-SET_TARGET_PROPERTIES(mov_simd PROPERTIES COMPILE_FLAGS "-ffast-math -ftree-vectorize -mavx")
+#add_executable(mov_simd mov_seq.cpp)
+#SET_TARGET_PROPERTIES(mov_sim PROPERTIES COMPILE_FLAGS "-ffast-math -ftree-vectorize -mavx")
 
 add_executable(mov_seq mov_seq.cpp)
 

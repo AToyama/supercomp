@@ -36,7 +36,7 @@ int main(){
 	queue<int> q;
 
 	Semaphore sm;
-    sm.init();
+    sm.init(0);
 
 	thread t1(produce,ref(q),ref(sm));
 	thread t2(consume,ref(q),ref(sm));

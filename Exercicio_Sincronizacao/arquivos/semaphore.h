@@ -13,8 +13,8 @@ class Semaphore{
 
 	public:
 
-		void  init(){
-			count = 0;
+		void  init(int n){
+			count = n;
 		}
 
 		void acquire(){

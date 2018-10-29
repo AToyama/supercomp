@@ -4,8 +4,8 @@ import random
 
 table_width = 100
 table_height = 100
-number_of_bodies = 500
-radius = 0.5
+number_of_bodies = 50
+radius = 2
 mu = 0.01
 speed_range = 6
 mass = 1

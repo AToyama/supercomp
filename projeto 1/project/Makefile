@@ -111,32 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named visualizador
-
-# Build rule for target.
-visualizador: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 visualizador
-.PHONY : visualizador
-
-# fast build rule for target.
-visualizador/fast:
-	$(MAKE) -f CMakeFiles/visualizador.dir/build.make CMakeFiles/visualizador.dir/build
-.PHONY : visualizador/fast
-
-#=============================================================================
-# Target rules for targets named mov_simd
-
-# Build rule for target.
-mov_simd: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 mov_simd
-.PHONY : mov_simd
-
-# fast build rule for target.
-mov_simd/fast:
-	$(MAKE) -f CMakeFiles/mov_simd.dir/build.make CMakeFiles/mov_simd.dir/build
-.PHONY : mov_simd/fast
-
-#=============================================================================
 # Target rules for targets named mov_par
 
 # Build rule for target.
@@ -161,6 +135,19 @@ mov_seq: cmake_check_build_system
 mov_seq/fast:
 	$(MAKE) -f CMakeFiles/mov_seq.dir/build.make CMakeFiles/mov_seq.dir/build
 .PHONY : mov_seq/fast
+
+#=============================================================================
+# Target rules for targets named visualizador
+
+# Build rule for target.
+visualizador: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 visualizador
+.PHONY : visualizador
+
+# fast build rule for target.
+visualizador/fast:
+	$(MAKE) -f CMakeFiles/visualizador.dir/build.make CMakeFiles/visualizador.dir/build
+.PHONY : visualizador/fast
 
 main.o: main.cpp.o
 
@@ -222,7 +209,6 @@ mov_seq.o: mov_seq.cpp.o
 
 # target to build an object file
 mov_seq.cpp.o:
-	$(MAKE) -f CMakeFiles/mov_simd.dir/build.make CMakeFiles/mov_simd.dir/mov_seq.cpp.o
 	$(MAKE) -f CMakeFiles/mov_seq.dir/build.make CMakeFiles/mov_seq.dir/mov_seq.cpp.o
 .PHONY : mov_seq.cpp.o
 
@@ -232,7 +218,6 @@ mov_seq.i: mov_seq.cpp.i
 
 # target to preprocess a source file
 mov_seq.cpp.i:
-	$(MAKE) -f CMakeFiles/mov_simd.dir/build.make CMakeFiles/mov_simd.dir/mov_seq.cpp.i
 	$(MAKE) -f CMakeFiles/mov_seq.dir/build.make CMakeFiles/mov_seq.dir/mov_seq.cpp.i
 .PHONY : mov_seq.cpp.i
 
@@ -242,7 +227,6 @@ mov_seq.s: mov_seq.cpp.s
 
 # target to generate assembly for a file
 mov_seq.cpp.s:
-	$(MAKE) -f CMakeFiles/mov_simd.dir/build.make CMakeFiles/mov_simd.dir/mov_seq.cpp.s
 	$(MAKE) -f CMakeFiles/mov_seq.dir/build.make CMakeFiles/mov_seq.dir/mov_seq.cpp.s
 .PHONY : mov_seq.cpp.s
 
@@ -280,11 +264,10 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... rebuild_cache"
-	@echo "... visualizador"
-	@echo "... mov_simd"
 	@echo "... mov_par"
 	@echo "... mov_seq"
+	@echo "... visualizador"
+	@echo "... rebuild_cache"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

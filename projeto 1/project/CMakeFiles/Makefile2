@@ -60,80 +60,6 @@ CMAKE_SOURCE_DIR = "/home/toyama/Documents/8_Semestre/supercomp/work/supercomp/p
 CMAKE_BINARY_DIR = "/home/toyama/Documents/8_Semestre/supercomp/work/supercomp/projeto 1/project"
 
 #=============================================================================
-# Target rules for target CMakeFiles/visualizador.dir
-
-# All Build rule for target.
-CMakeFiles/visualizador.dir/all:
-	$(MAKE) -f CMakeFiles/visualizador.dir/build.make CMakeFiles/visualizador.dir/depend
-	$(MAKE) -f CMakeFiles/visualizador.dir/build.make CMakeFiles/visualizador.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/toyama/Documents/8_Semestre/supercomp/work/supercomp/projeto 1/project/CMakeFiles" --progress-num=7,8,9 "Built target visualizador"
-.PHONY : CMakeFiles/visualizador.dir/all
-
-# Include target in all.
-all: CMakeFiles/visualizador.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/visualizador.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/toyama/Documents/8_Semestre/supercomp/work/supercomp/projeto 1/project/CMakeFiles" 3
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/visualizador.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/toyama/Documents/8_Semestre/supercomp/work/supercomp/projeto 1/project/CMakeFiles" 0
-.PHONY : CMakeFiles/visualizador.dir/rule
-
-# Convenience name for target.
-visualizador: CMakeFiles/visualizador.dir/rule
-
-.PHONY : visualizador
-
-# clean rule for target.
-CMakeFiles/visualizador.dir/clean:
-	$(MAKE) -f CMakeFiles/visualizador.dir/build.make CMakeFiles/visualizador.dir/clean
-.PHONY : CMakeFiles/visualizador.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/visualizador.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/mov_simd.dir
-
-# All Build rule for target.
-CMakeFiles/mov_simd.dir/all:
-	$(MAKE) -f CMakeFiles/mov_simd.dir/build.make CMakeFiles/mov_simd.dir/depend
-	$(MAKE) -f CMakeFiles/mov_simd.dir/build.make CMakeFiles/mov_simd.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/toyama/Documents/8_Semestre/supercomp/work/supercomp/projeto 1/project/CMakeFiles" --progress-num=5,6 "Built target mov_simd"
-.PHONY : CMakeFiles/mov_simd.dir/all
-
-# Include target in all.
-all: CMakeFiles/mov_simd.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/mov_simd.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/toyama/Documents/8_Semestre/supercomp/work/supercomp/projeto 1/project/CMakeFiles" 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mov_simd.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/toyama/Documents/8_Semestre/supercomp/work/supercomp/projeto 1/project/CMakeFiles" 0
-.PHONY : CMakeFiles/mov_simd.dir/rule
-
-# Convenience name for target.
-mov_simd: CMakeFiles/mov_simd.dir/rule
-
-.PHONY : mov_simd
-
-# clean rule for target.
-CMakeFiles/mov_simd.dir/clean:
-	$(MAKE) -f CMakeFiles/mov_simd.dir/build.make CMakeFiles/mov_simd.dir/clean
-.PHONY : CMakeFiles/mov_simd.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/mov_simd.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/mov_par.dir
 
 # All Build rule for target.
@@ -204,6 +130,43 @@ CMakeFiles/mov_seq.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/mov_seq.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/visualizador.dir
+
+# All Build rule for target.
+CMakeFiles/visualizador.dir/all:
+	$(MAKE) -f CMakeFiles/visualizador.dir/build.make CMakeFiles/visualizador.dir/depend
+	$(MAKE) -f CMakeFiles/visualizador.dir/build.make CMakeFiles/visualizador.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/toyama/Documents/8_Semestre/supercomp/work/supercomp/projeto 1/project/CMakeFiles" --progress-num=5,6,7 "Built target visualizador"
+.PHONY : CMakeFiles/visualizador.dir/all
+
+# Include target in all.
+all: CMakeFiles/visualizador.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/visualizador.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/toyama/Documents/8_Semestre/supercomp/work/supercomp/projeto 1/project/CMakeFiles" 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/visualizador.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/toyama/Documents/8_Semestre/supercomp/work/supercomp/projeto 1/project/CMakeFiles" 0
+.PHONY : CMakeFiles/visualizador.dir/rule
+
+# Convenience name for target.
+visualizador: CMakeFiles/visualizador.dir/rule
+
+.PHONY : visualizador
+
+# clean rule for target.
+CMakeFiles/visualizador.dir/clean:
+	$(MAKE) -f CMakeFiles/visualizador.dir/build.make CMakeFiles/visualizador.dir/clean
+.PHONY : CMakeFiles/visualizador.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/visualizador.dir/clean
 
 .PHONY : clean
 

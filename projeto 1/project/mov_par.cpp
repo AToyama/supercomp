@@ -226,7 +226,7 @@ int main(int argc, char ** argv) {
     //simulate 100.000 iterations of the simulation
     for (int w = 0; w < iter; ++w)
     {
-        #pragma omp parallel for private(j)
+        #pragma omp parallel for
         for (i = 0; i < balls.size(); ++i) {
 
             //update ball position
@@ -234,8 +234,10 @@ int main(int argc, char ** argv) {
 
             //check collision with the table
             ball_table_col(balls[i], table);
+        }
 
-            
+        #pragma omp parallel for private(j)
+        for (i = 0; i < balls.size(); ++i) {            
             //iterate with the rest of the list
             for (j = 0; j < balls.size(); j++){
 
@@ -243,6 +245,8 @@ int main(int argc, char ** argv) {
                     //check and resolve collision ball to ball
                     if(colide(balls[i],balls[j])){
                         ball_to_ball_col(balls[i],balls[j]);
+                        update_ball(balls[i],delta_t);
+                        update_ball(balls[j],delta_t);
                     }
                 }
             }

@@ -219,6 +219,7 @@ int main(int argc, char ** argv) {
     }
 
     int iter = 100000;
+    int i,j;
 
     chrono::time_point<chrono::high_resolution_clock> start, end;
     start = chrono::high_resolution_clock::now();
@@ -226,18 +227,18 @@ int main(int argc, char ** argv) {
     //simulate 100.000 iterations of the simulation
     for (int w = 0; w < iter; ++w)
     {
-	    
-        //iterate a list with every ball
-        for (int unsigned i = 0; i < balls.size(); i++){
+        for (i = 0; i < balls.size(); ++i) {
 
             //update ball position
             update_ball(balls[i],delta_t);
 
             //check collision with the table
             ball_table_col(balls[i], table);
+        }
 
+        for (i = 0; i < balls.size(); ++i) {            
             //iterate with the rest of the list
-            for (int unsigned j = 0; j < balls.size(); j++){
+            for (j = 0; j < balls.size(); j++){
 
                 if(balls[i].id != balls[j].id){
                     //check and resolve collision ball to ball
